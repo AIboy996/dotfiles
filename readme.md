@@ -3,3 +3,4 @@
 Including:
 
 - `sketchybar+yabai` config
+- `zsh` config
