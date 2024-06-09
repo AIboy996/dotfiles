@@ -12,19 +12,22 @@ update() {
 }
 
 mouse_clicked() {
-  if [ "$BUTTON" = "right" ]; then
-    # yabai -m space --destroy $SID
-    sketchybar --trigger windows_on_spaces --trigger space_change
-  else
-    # yabai -m space --focus $SID 2>/dev/null
-    # https://eastmanreference.com/complete-list-of-applescript-key-codes
-    # simulate control+18, 19, 20
-    osascript -e "tell application \"System Events\" to key code $((SID+17)) using control down"
+  if [ "$BUTTON" = "left" ]; then
+  # https://eastmanreference.com/complete-list-of-applescript-key-codes
+  # simulate control+18, 19, 20
+  osascript -e "tell application \"System Events\" to key code $((SID+17)) using control down"
+  sketchybar --trigger space_change
   fi
+  # remove: 
+  # yabai -m space --destroy $SID
+  # yabai -m space --focus $SID 2>/dev/null
 }
 
 case "$SENDER" in
   "mouse.clicked") mouse_clicked
+  ;;
+  "space_windows_change")
+  sketchybar --trigger windows_on_spaces
   ;;
   *) update
   ;;

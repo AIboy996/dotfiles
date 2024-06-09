@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SPACE_ICONS=("Main" "Code" "Re" "1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12")
+SPACE_ICONS=("Home" "Code" "Re" "1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12")
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)
@@ -14,7 +14,7 @@ for i in "${!SPACE_ICONS[@]}"; do
 		associated_space=$sid
 		icon="${SPACE_ICONS[i]}"
 		icon.padding_left=10
-		icon.padding_right=3
+		icon.padding_right=0
 		padding_left=2
 		padding_right=2
 		label.padding_right=20
@@ -32,7 +32,7 @@ for i in "${!SPACE_ICONS[@]}"; do
 
 	sketchybar --add space space.$sid left \
 		--set space.$sid "${space[@]}" \
-		--subscribe space.$sid mouse.clicked
+		--subscribe space.$sid mouse.clicked space_windows_change
 done
 
 spaces_bracket=(

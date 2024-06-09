@@ -30,9 +30,9 @@ bar=(
 	padding_right=10
 	padding_left=10
 	y_offset=-1
-	margin=8
-	corner_radius=10
-	blur_radius=20
+	margin=-1
+	corner_radius=0
+	blur_radius=0
 	shadow=on
 )
 
@@ -56,8 +56,8 @@ defaults=(
 	background.height=26
 	background.corner_radius=9
 	background.border_width=2
-	popup.background.border_width=2
-	popup.background.corner_radius=9
+	popup.background.border_width=1
+	popup.background.corner_radius=5
 	popup.background.border_color=$POPUP_BORDER_COLOR
 	popup.background.color=$POPUP_BACKGROUND_COLOR
 	popup.blur_radius=20

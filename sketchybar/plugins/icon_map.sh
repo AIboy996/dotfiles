@@ -1,4 +1,7 @@
 case $@ in
+"Plex")
+	icon_result=":playing:"
+	;;
 "licecap")
 	icon_result=":camera:"
 	;;
@@ -44,7 +47,7 @@ case $@ in
 "Thunderbird")
 	icon_result=":thunderbird:"
 	;;
-"Notes")
+"Notes" | "massCode")
 	icon_result=":notes:"
 	;;
 "Caprine")
@@ -173,7 +176,7 @@ case $@ in
 "Evernote Legacy")
 	icon_result=":evernote_legacy:"
 	;;
-"Calendar" | "Fantastical")
+"Calendar" | "Fantastical" | "日历")
 	icon_result=":calendar:"
 	;;
 "Android Studio")
@@ -224,7 +227,7 @@ case $@ in
 "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Outlook")
 	icon_result=":mail:"
 	;;
-"Safari" | "Safari Technology Preview")
+"Safari" | "Safari Technology Preview" | "JupyterLab")
 	icon_result=":safari:"
 	;;
 "Telegram")
@@ -326,7 +329,7 @@ case $@ in
 "Reminders")
 	icon_result=":reminders:"
 	;;
-"Preview" | "Skim" | "zathura" | "sioyek")
+"Preview" | "Skim" | "zathura" | "sioyek" | "预览")
 	icon_result=":pdf:"
 	;;
 "1Password 7")
