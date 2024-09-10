@@ -41,10 +41,10 @@ spaces_bracket=(
 )
 
 separator=(
-	icon=􀆊
+	icon="$"
 	icon.font="$FONT:Heavy:16.0"
-	padding_left=10
-	padding_right=8
+	padding_left=0
+	padding_right=0
 	label.drawing=off
 	associated_display=active
 	# click_script='yabai -m space --create && sketchybar --trigger space_change'

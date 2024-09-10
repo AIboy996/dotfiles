@@ -50,7 +50,9 @@ windows_on_spaces () {
     for space in $line
     do
       icon_strip=" "
-      apps=$(yabai -m query --windows --space $space | jq -r ".[].app")
+      # 去除重复的腾讯会议，只显示一个
+      # apps=$(yabai -m query --windows --space $space | jq -r ".[].app" | sort | awk '{for(i=1;i<=NF;i++) if($i!="腾讯会议" || !seen[$i]++) printf "%s ", $i; print ""}')
+      apps=$(yabai -m query --windows --space $space | jq -r ".[].app" | sort)
       if [ "$apps" != "" ]; then
         while IFS= read -r app; do
           icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"

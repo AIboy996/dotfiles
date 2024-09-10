@@ -4,3 +4,4 @@ Including:
 
 - `sketchybar+yabai` config
 - `zsh` config
+- `hammerspoon` config
