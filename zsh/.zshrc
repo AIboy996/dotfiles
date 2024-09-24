@@ -37,7 +37,6 @@ alias "s"="neofetch"
 alias "c"="clear"
 alias "copy"="pbcopy"
 alias "lsapp"="yabai -m query --windows | grep app"
-alias "update_whisper"="curl -X POST "https://api.cloudflare.com/client/v4/pages/webhooks/deploy_hooks/57db0a22-eccb-4ba3-b2e4-523ed0a47a2d""
 
 # my keys
 source ~/.key

@@ -63,16 +63,17 @@ hs.hotkey.bind({ "cmd", "shift" }, "Down", function()
     win:setFrame(f)
 end)
 
-local function moveChatGPT()
-    local targetFrame = hs.application.applicationsForBundleID("ru.keepcoder.Telegram")[1]:focusedWindow():frame()
-    local gpt = hs.application.applicationsForBundleID("com.openai.chat")[1]:allWindows()[1]
-    targetFrame.y = targetFrame.y + targetFrame.h
-    targetFrame.h = targetFrame.h / 2
-    gpt:setFrame(targetFrame)
-end
+-- local function moveChatGPT()
+--     local targetFrame = hs.application.applicationsForBundleID("ru.keepcoder.Telegram")[1]:focusedWindow():frame()
+--     local gpt = hs.application.applicationsForBundleID("com.tencent.qq")[1]:allWindows()[1]
+--     targetFrame.x = targetFrame.x + targetFrame.w
+--     targetFrame.w = gpt:frame().w
+--     gpt:setFrame(targetFrame)
+--     -- gpt:focus()
+-- end
 
-local telegramWindowFilter = hs.window.filter.new(false):setAppFilter('Telegram')
-telegramWindowFilter:subscribe(hs.window.filter.windowMoved, moveChatGPT)
+-- local telegramWindowFilter = hs.window.filter.new(false):setAppFilter('Telegram')
+-- telegramWindowFilter:subscribe(hs.window.filter.windowMoved, moveChatGPT)
 
 local function reloadConfig(files)
     local doReload = false
