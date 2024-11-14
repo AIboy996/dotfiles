@@ -13,34 +13,48 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-autoload -Uz compinit && compinit
+# 添加docker以及其他自动补全
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$HOME/.docker/completions:$FPATH
+  autoload -Uz compinit
+  compinit
+fi
+# 自动补全样式
+zstyle ':completion:*' completer _extensions _complete _approximate
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' menu select
+zstyle ':completion:*:*:*:*:descriptions' format '%F{green}[ %d ]%f'
+
+# p10k 主题
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+
+# 默认Python
+alias "python3"="python3.11"
+alias "python"="/opt/homebrew/bin/python3.11"
+# 系统预装Python
+alias "python3.9"="/usr/bin/python3"
 
 alias "trans"="~/trans -e bing"
 alias "en"="trans -t en -s zh"
 alias "zh"="trans -t zh -s en"
 alias "ja"="trans -t ja -s zh"
-alias "python"="/opt/homebrew/bin/python3.11"
-alias "pip"="/opt/homebrew/bin/python3.11 -m pip"
-alias "python3.11"="$(brew --prefix python@3.11)/libexec/bin/python"
-alias "python3.12"="$(brew --prefix python@3.12)/libexec/bin/python"
-alias "python3.9"="/usr/bin/python3"
-alias "python3"="python3.11" # 默认Python
 alias "ls"="ls -G"
 alias "ll"="ls -alhiG"
 alias "s"="neofetch"
 alias "c"="clear"
 alias "copy"="pbcopy"
-alias "lsapp"="yabai -m query --windows | grep app"
+alias "lsapp"="yabai -m query --windows | grep app | sort"
 
 # my keys
 source ~/.key
+source <(fzf --zsh)
 
+# zoxide
 eval "$(zoxide init zsh)"
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # MUST Be the last line
-source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

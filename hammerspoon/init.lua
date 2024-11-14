@@ -1,3 +1,15 @@
+-- api docs see: https://www.hammerspoon.org/docs/index.html
+-- api docs see: https://www.hammerspoon.org/docs/index.html
+
+-- 已绑定的快捷键:
+-- cmd + shift + Left: 左分屏
+-- cmd + shift + Right: 右分屏
+-- cmd + shift + Up: 全屏
+-- cmd + shift + Down: 中屏
+-- cmd + shift + /: 整理窗口
+-- cmd + shift + ]: 把窗口右移，并且切换到右边的space
+-- cmd + shift + [: 把窗口左移，并且切换到左边的space
+
 local notch = 0
 -- 左右分屏
 hs.hotkey.bind({ "cmd", "shift" }, "Left", function()
@@ -62,6 +74,44 @@ hs.hotkey.bind({ "cmd", "shift" }, "Down", function()
     f.h = max.h / 1.5
     win:setFrame(f)
 end)
+
+-- 整理窗口
+local function tidy_up_window()
+    local wf = hs.window.filter
+    local pined_app = wf.new { 'Telegram', 'QQ', '微信', '邮件' }
+    for _, window in ipairs(pined_app:getWindows()) do
+        hs.spaces.moveWindowToSpace(window, 3)
+    end
+    local work_app = wf.new { 'Google Chrome', '预览', '访达' }
+    for _, window in ipairs(work_app:getWindows()) do
+        hs.spaces.moveWindowToSpace(window, 4)
+    end
+    local code_app = wf.new { 'iTerm2', 'Termius', 'Code' }
+    for _, window in ipairs(code_app:getWindows()) do
+        hs.spaces.moveWindowToSpace(window, 5)
+    end
+    local re_app = wf.new { '音乐', 'Zotero', 'Calibre' }
+    for _, window in ipairs(re_app:getWindows()) do
+        hs.spaces.moveWindowToSpace(window, 6)
+    end
+    hs.alert.show("Tidy Up Done")
+end
+
+hs.hotkey.bind({ "cmd", "shift" }, "/", tidy_up_window)
+
+
+hs.hotkey.bind({ "cmd", "shift" }, "]", function()
+    local target_space = hs.spaces.activeSpaceOnScreen() + 1
+    hs.spaces.moveWindowToSpace(hs.window.focusedWindow(), target_space)
+    hs.spaces.gotoSpace(target_space)
+end)
+
+hs.hotkey.bind({ "cmd", "shift" }, "[", function()
+    local target_space = hs.spaces.activeSpaceOnScreen() - 1
+    hs.spaces.moveWindowToSpace(hs.window.focusedWindow(), target_space)
+    hs.spaces.gotoSpace(target_space)
+end)
+
 
 -- local function moveChatGPT()
 --     local targetFrame = hs.application.applicationsForBundleID("ru.keepcoder.Telegram")[1]:focusedWindow():frame()

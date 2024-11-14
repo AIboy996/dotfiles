@@ -1,6 +1,7 @@
 #!/bin/bash
 
-SPACE_ICONS=("" "Work" "Code" "Re" "1" "2" "3" "4" "5" "6" "7" "8" "9" "10" "11" "12")
+# 只显示四个space
+SPACE_ICONS=("Pin" "Work" "Code" "Re")
 
 # Destroy space on right click, focus space on left click.
 # New space by left clicking separator (>)

@@ -1,4 +1,7 @@
 case $@ in
+"Finder" | "访达")
+	icon_result=":finder:"
+	;;
 "GitHub")
 	icon_result=":git_hub:"
 	;;
@@ -68,9 +71,9 @@ case $@ in
 "Microsoft Word")
 	icon_result=":microsoft_word:"
 	;;
-"Microsoft Teams")
-	icon_result=":microsoft_teams:"
-	;;
+# "Microsoft Teams")
+# 	icon_result=":microsoft_teams:"
+# 	;;
 "Neovide" | "MacVim" | "Vim" | "VimR")
 	icon_result=":vim:"
 	;;
@@ -179,14 +182,17 @@ case $@ in
 "calibre" | "图书")
 	icon_result=":book:"
 	;;
-"Finder" | "访达")
-	icon_result=":finder:"
-	;;
 "播客")
 	icon_result=":podcasts:"
 	;;
-"Alacritty" | "Hyper" | "kitty" | "Terminal" | "Termius" | "iTerm2")
+"Termius")
+	icon_result=":creative_cloud:"
+	;;
+"Alacritty" | "Hyper" | "kitty" | "Terminal" | "iTerm" | "iTerm2")
 	icon_result=":terminal:"
+	;;
+"VidHub")
+	icon_result=":jellyfin:"
 	;;
 *)
 	icon_result=""
