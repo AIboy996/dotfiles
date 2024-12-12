@@ -1,5 +1,4 @@
 -- api docs see: https://www.hammerspoon.org/docs/index.html
--- api docs see: https://www.hammerspoon.org/docs/index.html
 
 -- 已绑定的快捷键:
 -- cmd + shift + Left: 左分屏

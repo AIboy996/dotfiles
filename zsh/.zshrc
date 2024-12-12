@@ -32,12 +32,11 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# 默认Python
-alias "python3"="python3.11"
-alias "python"="/opt/homebrew/bin/python3.11"
+# 修改默认Python
+export PATH="$(brew --prefix python@3.11)/libexec/bin:$PATH"
+
 # 系统预装Python
 alias "python3.9"="/usr/bin/python3"
-
 alias "trans"="~/trans -e bing"
 alias "en"="trans -t en -s zh"
 alias "zh"="trans -t zh -s en"
