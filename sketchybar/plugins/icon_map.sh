@@ -14,9 +14,6 @@ case $@ in
 "便笺")
 	icon_result=":reminders:"
 	;;
-"ChatGPT")
-	icon_result=":openai:"
-	;;
 "OrbStack")
 	icon_result=":docker:"
 	;;

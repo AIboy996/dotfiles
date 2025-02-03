@@ -32,9 +32,11 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
+# my keys
+source ~/.key
+source <(fzf --zsh)
 # 修改默认Python
 export PATH="$(brew --prefix python@3.11)/libexec/bin:$PATH"
-
 # 系统预装Python
 alias "python3.9"="/usr/bin/python3"
 alias "trans"="~/trans -e bing"
@@ -42,16 +44,16 @@ alias "en"="trans -t en -s zh"
 alias "zh"="trans -t zh -s en"
 alias "ja"="trans -t ja -s zh"
 alias "ls"="ls -G"
-alias "ll"="ls -alhiG"
+alias "ll"="ls -althiG"
 alias "s"="neofetch"
-alias "c"="clear"
+alias "c"='echo -e "\033c"' # fake clear
 alias "copy"="pbcopy"
 alias "lsapp"="yabai -m query --windows | grep app | sort"
-
-# my keys
-source ~/.key
-source <(fzf --zsh)
-
+alias "chrome"="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222"
+alias "bark"="bash ~/bark.sh"
+# easy connect
+alias "unload_easy"="sudo launchctl unload /Library/LaunchDaemons/com.sangfor.EasyMonitor.plist && echo off > ~/easy.status"
+alias "load_easy"="sudo launchctl load /Library/LaunchDaemons/com.sangfor.EasyMonitor.plist && echo on > ~/easy.status"
 # zoxide
 eval "$(zoxide init zsh)"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
