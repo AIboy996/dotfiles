@@ -2,6 +2,8 @@
 
 Including:
 
-- `sketchybar+yabai` config
-- `zsh` config
+- `sketchybar` config
 - `hammerspoon` config
+- `neofetch` config
+- `fish` config
+- `zsh` config
