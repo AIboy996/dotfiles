@@ -75,28 +75,28 @@ hs.hotkey.bind({ "cmd", "shift" }, "Down", function()
 end)
 
 -- 整理窗口
-local function tidy_up_window()
-    local wf = hs.window.filter
-    local pined_app = wf.new { 'QQ', '微信' }
-    for _, window in ipairs(pined_app:getWindows()) do
-        hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][1])
-    end
-    local work_app = wf.new { 'Google Chrome', '预览', '访达', '邮件' }
-    for _, window in ipairs(work_app:getWindows()) do
-        hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][2])
-    end
-    local code_app = wf.new { 'iTerm2', 'Termius', 'Code', 'Telegram' }
-    for _, window in ipairs(code_app:getWindows()) do
-        hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][3])
-    end
-    local re_app = wf.new { '音乐', 'Zotero', 'Calibre' }
-    for _, window in ipairs(re_app:getWindows()) do
-        hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][4])
-    end
-    hs.alert.show("Tidy Up Done")
-end
+-- local function tidy_up_window()
+--     local wf = hs.window.filter
+--     local pined_app = wf.new { 'QQ', '微信' }
+--     for _, window in ipairs(pined_app:getWindows()) do
+--         hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][1])
+--     end
+--     local work_app = wf.new { 'Google Chrome', '预览', '访达', '邮件' }
+--     for _, window in ipairs(work_app:getWindows()) do
+--         hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][2])
+--     end
+--     local code_app = wf.new { 'iTerm2', 'Termius', 'Code', 'Telegram' }
+--     for _, window in ipairs(code_app:getWindows()) do
+--         hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][3])
+--     end
+--     local re_app = wf.new { '音乐', 'Zotero', 'Calibre' }
+--     for _, window in ipairs(re_app:getWindows()) do
+--         hs.spaces.moveWindowToSpace(window, hs.spaces.allSpaces()[next(hs.spaces.allSpaces())][4])
+--     end
+--     hs.alert.show("Tidy Up Done")
+-- end
 
-hs.hotkey.bind({ "cmd", "shift" }, "/", tidy_up_window)
+-- hs.hotkey.bind({ "cmd", "shift" }, "/", tidy_up_window)
 
 
 hs.hotkey.bind({ "cmd", "shift" }, "]", function()
@@ -135,3 +135,14 @@ end
 Watcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/",
     reloadConfig):start()
 hs.alert.show("Hamerspoon Config reloaded")
+
+-- 切换到AirPods Pro的时候自动调整音量
+-- 不然真的要聋了
+hs.audiodevice.watcher.setCallback(function()
+    local now_device = hs.audiodevice.defaultEffectDevice()
+    if now_device:name() == "yang的AirPods Pro" then
+        hs.audiodevice.defaultOutputDevice():setVolume(25)
+        hs.alert.show("已切换到yang的AirPods Pro")
+    end
+end)
+hs.audiodevice.watcher.start()

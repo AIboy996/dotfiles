@@ -35,15 +35,13 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # my keys
 source ~/.key
 source <(fzf --zsh)
-# 修改默认Python
-export PATH="$(brew --prefix python@3.11)/libexec/bin:$PATH"
 # 系统预装Python
 alias "python3.9"="/usr/bin/python3"
 alias "trans"="~/trans -e bing"
 alias "en"="trans -t en -s zh"
 alias "zh"="trans -t zh -s en"
 alias "ja"="trans -t ja -s zh"
-alias "ls"="ls -G"
+alias "ls"="gls --color=auto --group-directories-first"
 alias "ll"="ls -althiG"
 alias "s"="neofetch"
 alias "c"='echo -e "\033c"' # fake clear
@@ -59,3 +57,4 @@ eval "$(zoxide init zsh)"
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 # MUST Be the last line
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+

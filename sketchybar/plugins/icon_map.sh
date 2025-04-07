@@ -125,7 +125,7 @@ case $@ in
 "Canary Mail" | "HEY" | "Mail" | "Mailspring" | "MailMate" | "邮件" | "Outlook")
 	icon_result=":mail:"
 	;;
-"Safari" | "Safari Technology Preview" | "JupyterLab")
+"Safari" | "Safari Technology Preview" | "力扣" | "DeepSeek")
 	icon_result=":safari:"
 	;;
 "Telegram")
@@ -183,11 +183,11 @@ case $@ in
 	icon_result=":podcasts:"
 	;;
 "Termius")
-	icon_result=":creative_cloud:"
-	;;
-"Alacritty" | "Hyper" | "kitty" | "Terminal" | "iTerm" | "iTerm2")
 	icon_result=":terminal:"
 	;;
+# "Alacritty" | "Hyper" | "kitty" | "Terminal" | "iTerm" | "iTerm2")
+# 	icon_result=":terminal:"
+# 	;;
 "VidHub")
 	icon_result=":jellyfin:"
 	;;
